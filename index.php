@@ -3,7 +3,7 @@
     <head>
  
         <title>kModerate</title>
-        <script src="lib/touch/sencha-touch-debug.js" type="text/javascript"></script>
+        <script src="lib/touch/sencha-touch.js" type="text/javascript"></script>
         <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script src="lib/kaltura/minified/kalturaClient.js" type="text/javascript"></script>
         <script src="app/main.js" type="text/javascript"></script>
