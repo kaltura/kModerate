@@ -34,6 +34,20 @@ var kModerate = new Ext.Application({
 			console.log(msg);
 		}
 	},
+	profiles: {
+	    portraitPhone: function() {
+	        return Ext.is.Phone && Ext.orientation == 'portrait';
+	    },
+	    landscapePhone: function() {
+	        return Ext.is.Phone && Ext.orientation == 'landscape';
+	    },
+	    portraitTablet: function() {
+	        return !Ext.is.Phone && Ext.orientation == 'portrait';
+	    },
+	    landscapeTablet: function() {
+	        return !Ext.is.Phone && Ext.orientation == 'landscape';
+	    }
+	},
 	
     launch : function() {
 
@@ -223,7 +237,18 @@ var kModeratePanels = {
 		submit: function(){
 			loginClickHandler();
 		},
-		//scroll: 'vertical',
+		scroll: 'vertical',
+/*		setProfile: function (profile) {
+			kModerate.myLog('profile changed');
+			if (profile=="landscapePhone") {
+				kModerate.myLog('profile is phone landscape');
+				kModeratePanels.loginPanel.setScrollable('vertical');
+			}
+			if (profile=="portraitPhone") {
+				kModerate.myLog('profile is phone portrait');
+				kModeratePanels.loginPanel.setScrollable('false');
+			}
+		},*/
 		items : [{
 				hidden: 'true',
 				id: 'login-error-wrapper',
