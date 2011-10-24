@@ -37,6 +37,7 @@ var kModerate = new Ext.Application({
 	
     launch : function() {
 
+		pageCls = (Ext.is.Phone)? 'phone': 'tablet';
 		documentCookies = document.cookie.split(";");
 		for (i=0;i<documentCookies.length;i++)
 		{
@@ -87,6 +88,7 @@ var kModerate = new Ext.Application({
 		}
 			
 		kModerate.myPanel = new Ext.Panel({
+			cls: pageCls,
 		    dockedItems: [kModerate.myTopToolbar, kModerate.myToolbar], // top toolbar dock
 		    fullscreen : true,
 		    layout: 'card',
@@ -214,13 +216,14 @@ kModerateElements.rememberMeCheckBox.on('uncheck', function(){
 var kModeratePanels = {
 	loginPanel : new Ext.form.FormPanel({
     	title: 'Login',
+    	cls: 'myLoginPanel',
 		fullscreen: true,
 		id: "loginForm",
 		submitOnAction: true,
 		submit: function(){
 			loginClickHandler();
 		},
-		scroll: 'vertical',
+		//scroll: 'vertical',
 		items : [{
 				hidden: 'true',
 				id: 'login-error-wrapper',
@@ -228,13 +231,21 @@ var kModeratePanels = {
 			},{
 				xtype: 'fieldset',
 				title: 'Login',
-				instructions: 'Login using your KMC credentials',
+				instructions: 'Login using your KMC credentials<br />Change the Kaltura Host URL for working with self-hosted edition',
 				defaults: {
 					labelWidth: '35%',
 					labelAlign: 'left',
 					maxHeight: '20px'
 				},
 				items: [{
+					xtype: 'urlfield',
+					name: 'kalturahost',
+					label: 'Kaltura Host',
+					value: 'https://www.kaltura.com',
+					instructions: 'Change the Kaltura Host URL for working with self-hosted edition',
+					maxHeight: '20px',
+					useClearIcon: true
+				},{
 					xtype: 'emailfield',
 					name: 'email',
 					label: 'Email',
@@ -247,22 +258,6 @@ var kModeratePanels = {
 				},kModerateElements.rememberMeCheckBox
 				]
 		    },{
-				xtype: 'fieldset',
-				instructions: 'Change the Kaltura Host URL for working with self-hosted edition',
-				defaults: {
-					labelWidth: '100%',
-					labelAlign: 'top',
-					maxHeight: '20px'
-				},
-				items: [{
-					xtype: 'urlfield',
-					name: 'kalturahost',
-					label: 'Kaltura Host',
-					value: 'https://www.kaltura.com',
-					maxHeight: '20px'
-				}
-				]
-			},{
 				layout: 'vbox',
 				defaults: {xtype: 'button', flex: 1},
 				items: [{

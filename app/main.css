@@ -1,21 +1,28 @@
-div.entryInList { color: #555555; /*font-size: 12px;*/}
+div.entryInList { color: #555555; }
 div.entryInList div.left { float: left; width: 48px; }
 div.entryInList div.right {float: left; }
 div.entryInList div.clear {clear: both; }
 div.entryInList div.left img { margin-left: 4px; margin:right:4px; }
 div.entryInList div.right strong { display:block; }
-div.entryInList div.right span {color: #999999; /*font-size: 10px;*/ display:block;}
+div.entryInList div.right span {color: #999999; display:block;}
 
-div.entryModerationDetails { padding: 5px; color: #555555; /*font-size: 12px;*/ }
+div.entryModerationDetails { padding: 5px; color: #555555; }
 div.entryModerationDetails p { margin-top: 2px; }
 div.entryModerationDetails strong { color: #030303; }
 div.entryModerationDetails div.kalturaPlayer { text-align: center; }
 
-div#updatingList { height: 100%; background-image: url('ajax-loader.gif'); background-repeat:no-repeat;	background-position: center center;	text-align: center;	padding: 5px; color: #555555; /*font-size: 12px; */}
+div#updatingList { height: 100%; background-image: url('ajax-loader.gif'); background-repeat:no-repeat;	background-position: center center;	text-align: center;	padding: 5px; color: #555555; }
 
-div#emptyList, div#aboutPage { padding: 5px; color: #555555; /*font-size: 12px;*/ }
+div#emptyList, div#aboutPage { padding: 5px; color: #555555; }
 
 span#login-error { color: #ff2222; }
 
 div#aboutPage strong {display:block; color: #030303; padding: 2px;}
 div#aboutPage p {margin-top: 4px; margin-bottom:4px;}
+
+.phone div.entryInList, .phone div.entryModerationDetails, .phone div#updatingList, .phone div#emptyList, .phone div#aboutPage{font-size: 12px;}
+.phone .myLoginPanel {font-size: 13px;}
+.phone div.entryInList div.right span {font-size: 10px;}
+
+.tablet div.entryInList, .tablet div.entryModerationDetails, .tablet div#updatingList, .tablet div#emptyList {font-size: 14px;}
+.tablet div.entryInList div.right span {font-size: 12px;}
