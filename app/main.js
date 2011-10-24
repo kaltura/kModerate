@@ -223,7 +223,7 @@ var kModeratePanels = {
 		submit: function(){
 			loginClickHandler();
 		},
-		//scroll: 'vertical',
+		scroll: 'vertical',
 		items : [{
 				hidden: 'true',
 				id: 'login-error-wrapper',
@@ -231,21 +231,13 @@ var kModeratePanels = {
 			},{
 				xtype: 'fieldset',
 				title: 'Login',
-				instructions: 'Login using your KMC credentials<br />Change the Kaltura Host URL for working with self-hosted edition',
+				instructions: 'Login using your KMC credentials',
 				defaults: {
 					labelWidth: '35%',
 					labelAlign: 'left',
 					maxHeight: '20px'
 				},
 				items: [{
-					xtype: 'urlfield',
-					name: 'kalturahost',
-					label: 'Kaltura Host',
-					value: 'https://www.kaltura.com',
-					instructions: 'Change the Kaltura Host URL for working with self-hosted edition',
-					maxHeight: '20px',
-					useClearIcon: true
-				},{
 					xtype: 'emailfield',
 					name: 'email',
 					label: 'Email',
@@ -258,6 +250,22 @@ var kModeratePanels = {
 				},kModerateElements.rememberMeCheckBox
 				]
 		    },{
+				xtype: 'fieldset',
+				instructions: 'Change the Kaltura Host URL for working with self-hosted edition',
+				defaults: {
+					labelWidth: '100%',
+					labelAlign: 'top',
+					maxHeight: '20px'
+				},
+				items: [{
+					xtype: 'urlfield',
+					name: 'kalturahost',
+					label: 'Kaltura Host',
+					value: 'https://www.kaltura.com',
+					maxHeight: '20px'
+				}
+				]
+			},{
 				layout: 'vbox',
 				defaults: {xtype: 'button', flex: 1},
 				items: [{
