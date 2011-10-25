@@ -7,7 +7,14 @@ Ext.setup({
 
 /* register the model for content items */
 var entryModel = Ext.regModel('Entry', {
-    fields: ['entryId', 'firstName', 'moderationStatus', 'description', 'tags', 'strModerationStatus', 'playerHtml', 'userId']
+    fields: ['entryId', 
+             'firstName', 
+             'moderationStatus', 
+             'description', 
+             'tags', 
+             'strModerationStatus', 
+             'playerHtml', 
+             'userId']
 });
 
 var kModerate = new Ext.Application({
@@ -446,7 +453,10 @@ function loginClickHandler()
 	{
 		kModerate.vars.host = host;
 	}
-	login(email, password);
+	
+	// call the login action on the Kaltura Client
+	var kClient = getKalturaClient();
+	kClient.user.loginByLoginId(loginCallback, email, password, null);
 }
 
 function getAboutPanel()
@@ -510,12 +520,6 @@ function getKalturaClient()
 		kClient.setKs(kModerate.vars.ks);
 	}
 	return kClient;
-}
-
-function login(email, password)
-{
-	var kClient = getKalturaClient();
-	kClient.user.loginByLoginId(loginCallback, email, password, null);
 }
 
 function setKsCookie()
