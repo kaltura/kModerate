@@ -143,6 +143,7 @@ var kModerateButtons = {
 		ui: 'round',
 		handler: function(){
 			removeKsCookie();
+			clearLoginForm();
 			kModerate.myPanel.setActiveItem(getLoginPanel());
 		}
 	}),
@@ -234,6 +235,18 @@ kModerateElements.rememberMeCheckBox.on('uncheck', function(){
 	kModerate.myLog('rememberme unchecked');
 	kModerate.vars.rememberMeChecked = false;
 });
+
+function clearLoginForm()
+{
+	var button = Ext.getCmp('loginFormSubmit');
+	button.enable();
+	var form = Ext.getCmp('loginForm');
+	var email = form.setValues({
+		email: '',
+		password: ''
+	});
+	var password = form.getValues().password;
+}
 var kModeratePanels = {
 	loginPanel : new Ext.form.FormPanel({
     	title: 'Login',
