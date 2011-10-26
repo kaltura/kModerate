@@ -179,6 +179,14 @@ var kModerateButtons = {
 		text: 'Reject',
 		hidden: true,
 		handler: rejectEntry
+	}),
+	loginButton: new Ext.Button({
+		text: "Login",
+		scope: this,
+		ui: 'action',
+		id: 'loginFormSubmit',
+		hasDisabled: false,
+		handler: loginClickHandler
 	})
 };
 
@@ -304,15 +312,8 @@ var kModeratePanels = {
 				]
 		    },{
 				layout: 'vbox',
-				defaults: {xtype: 'button', flex: 1},
-				items: [{
-					text: "Login",
-					scope: this,
-					ui: 'action',
-					id: 'loginFormSubmit',
-					hasDisabled: false,
-					handler: loginClickHandler
-				}]
+				defaults: {flex: 1},
+				items: [kModerateButtons.loginButton]
 		    }
 	    ]
 	}),
