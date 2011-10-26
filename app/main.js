@@ -497,7 +497,7 @@ function getEntryList()
 		var t = setTimeout('changeEntryListPanel()', 500);
 		return kModeratePanels.entryListUpdatingPanel;
 	}
-	
+	kModerate.myLog(kModeratePanels.updatedEntriesData);
 	if(!kModeratePanels.updatedEntriesData) return kModeratePanels.entryEmptyListPanel;
 
 	kModeratePanels.entryListPanel.store.loadData(kModeratePanels.updatedEntriesData, false);
@@ -508,7 +508,12 @@ function getEntryList()
 function changeEntryListPanel()
 {
 	kModerate.myLog('checking status and deciding');
+	kModerate.myLog(kModeratePanels.updatedEntriesData);
 	if(kModeratePanels.updatedEntriesData == 'neverRequested') var t = setTimeout('changeEntryListPanel()', 500);
+	else if(!kModeratePanels.updatedEntriesData)
+	{
+		kModerate.myPanel.setActiveItem(kModeratePanels.entryEmptyListPanel);
+	}
 	else 
 	{
 		kModeratePanels.entryListPanel.store.loadData(kModeratePanels.updatedEntriesData, false);
@@ -643,8 +648,10 @@ function getEntriesData()
 			kModerate.myLog('no data');
 			kModeratePanels.updatedEntriesData = false;
 		}
-		
-		kModeratePanels.updatedEntriesData = entriesData;
+		else
+		{
+			kModeratePanels.updatedEntriesData = entriesData;
+		}
 	}
 	
 	startSession();
