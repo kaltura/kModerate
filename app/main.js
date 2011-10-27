@@ -430,11 +430,20 @@ function getPlayerEmbed(partnerId, entryId)
 	width = Ext.Element.getViewportWidth()*0.75;
 	height = (width*0.75);
 	
-	/*width = 200;
-	height = 150;*/
 	html  = '<div class="kalturaPlayer" id="kaltura_container_'+entryId+'">';
-	html += '<iframe src="http://cdnakmi.kaltura.org/apis/html5lib/mwEmbed/mwEmbedFrame.php/wid/_';
+	/* kaltura.org HTML5 
+	html += '<iframe src="http://cdnakmi.kaltura.org/apis/html5lib/mwEmbed/mwEmbedFrame.php/wid/_';                                                                                                                                      
 	html += partnerId+'/uiconf_id/48501/entry_id/'+entryId+'/?flashvars%5Bks%5D='+kModerate.vars.ks+'" width="'+width+'" height="'+height+'" frameborder="0"></iframe>';
+	*/
+	/* kaltura.com HTML5 - not optimal*/
+	html += '<iframe src="http://cdnbakmi.kaltura.com/html5/html5lib/v1.5.9/mwEmbedFrame.php/wid/_';                                                                                                                                      
+	html += partnerId+'/uiconf_id/48501/entry_id/'+entryId+'/?flashvars%5Bks%5D='+kModerate.vars.ks+'" width="'+width+'" height="'+height+'" frameborder="0"></iframe>';
+	
+	/* kaltura.com HTML5 
+	html += '<iframe src="http://www.kaltura.com/p/';
+	html += partnerId+'/sp/'+partnerId+'00/embedIframe/uiconf_id/48501/widget_id/_'+partnerId;
+	html += '/entry_id/'+entryId+'/?flashvars%5Bks%5D='+kModerate.vars.ks+'" width="'+width+'" height="'+height+'" frameborder="0"></iframe>';
+	*/
 	html += '</div>';
 	return html;
 }
